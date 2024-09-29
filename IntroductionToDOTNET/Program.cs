@@ -1,6 +1,8 @@
 ﻿//#define CONSOLE_CLASS
 //#define STRING_OPERATIONS
 //#define HARD_CHESS
+//#define GEOMETRIA
+//#define CHESS_BOARD
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
@@ -92,20 +94,21 @@ namespace IntroductionToDOTNET
             }       
 #endif
 
+#if GEOMETRIA
 			int scale = 5;
-            char sym = '*';
-            char fym = '*';
+			char sym = '*';
+			char fym = '*';
 
-            for(int i = 0; i < scale; ++i)
-            {
-                for(int j = 0; j < scale; ++j)
-                {
-                    if (j < scale - 1)
-                        Console.Write("* ");
-                    else
-                        Console.WriteLine("* ");
-                }
-            }
+			for (int i = 0; i < scale; ++i)
+			{
+				for (int j = 0; j < scale; ++j)
+				{
+					if (j < scale - 1)
+						Console.Write("* ");
+					else
+						Console.WriteLine("* ");
+				}
+			}
 
 			Console.WriteLine("");
 			Console.WriteLine("");
@@ -114,10 +117,10 @@ namespace IntroductionToDOTNET
 			{
 				for (int j = 0; j < scale; ++j)
 				{
-                    if (i >= j)
-                        sym = '*';
-                    else
-                        sym = ' ';
+					if (i >= j)
+						sym = '*';
+					else
+						sym = ' ';
 
 					if (j < scale - 1)
 						Console.Write(sym + " ");
@@ -191,11 +194,11 @@ namespace IntroductionToDOTNET
 			for (int i = 0; i < scale; ++i)
 			{
 				for (int j = 0; j < scale; ++j)
-				{					
-					if (j == scale - (i - scale / 2) - 1 || i == scale / 2 - j - 1)						
+				{
+					if (j == scale - (i - scale / 2) - 1 || i == scale / 2 - j - 1)
 						sym = '/';
 					else if (j == scale / 2 + i || i == scale / 2 + j)
-						sym = '\\';					
+						sym = '\\';
 					else
 						sym = ' ';
 
@@ -208,6 +211,41 @@ namespace IntroductionToDOTNET
 
 			Console.WriteLine("");
 			Console.WriteLine("");
-		}
+#endif
+
+#if CHESS_BOARD
+
+			int scale = 4;
+
+			for (int i = 0; i < scale * 2; i++)
+			{
+
+				for (int j = 0; j < scale; j++)
+				{
+
+
+					if (i % 2 == 0)
+					{
+						Console.BackgroundColor = ConsoleColor.Gray;
+						Console.Write("  ");
+						Console.ResetColor();
+						Console.Write("  ");
+					}
+					else
+					{
+						Console.ResetColor();
+						Console.Write("  ");
+						Console.BackgroundColor = ConsoleColor.Gray;
+						Console.Write("  ");
+					}
+
+
+				}
+				Console.Write("\n");
+			}
+			Console.ResetColor();
+
+#endif
+		}  
 	}
 }
