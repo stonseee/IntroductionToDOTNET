@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace Factorial
 {
@@ -10,18 +11,22 @@ namespace Factorial
 	{
 		static void Main(string[] args)
 		{
-			decimal num = 0;
-			decimal result = 1;
-			string buffer = Console.ReadLine();
-			num = Convert.ToDecimal(buffer);
-
-			for(int i = 0; i < num; i++)
-			{		
-				result *= i + 1;
+			Console.Write("Введите число для вычисления факториала: ");
+			int n = Convert.ToInt32(Console.ReadLine());
+			BigInteger f = 1;
+			try
+			{
+				for (int i = 1; i <= n; i++)
+				{
+					f *= i;
+					Console.WriteLine($"{i}! = {f}");
+				}
 			}
-
-			Console.WriteLine("result " + result);	
-			
-		}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+			Console.WriteLine("Finita la comedia");
+		}		
 	}
 }
