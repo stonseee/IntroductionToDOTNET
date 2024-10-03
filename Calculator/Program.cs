@@ -10,32 +10,40 @@ namespace Calculator
 	{
 		static void Main(string[] args)
 		{
-			char[] delimiters = { '+', '-', '*', '/'};
-			char operation = ' ';
-			double result = 0;
-			
-			string input = Console.ReadLine();			
+			Console.Write("Введите арифметическое выражение: ");
+			string expression = Console.ReadLine();
+			expression = expression.Replace('.', ',');   
+			//Console.WriteLine(expression);
+			char[] delimiters = new char[] { '+', '-', '*', '/' };
+			string[] numbers = expression.Split(delimiters);
 
-			for(int i = 0; i < input.Length; i++)
-			{				
-				if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
+			try
+			{
+				double a = Convert.ToDouble(numbers[0]);
+				double b = Convert.ToDouble(numbers[1]);
+
+				#region IFcalc
+				//if (expression.Contains('+'))Console.WriteLine($"{a} + {b} = {a + b}");
+				//else if (expression.Contains('-'))Console.WriteLine($"{a} - {b} = {a - b}");
+				//else if (expression.Contains('*'))Console.WriteLine($"{a} * {b} = {a * b}");
+				//else if (expression.Contains('/'))Console.WriteLine($"{a} / {b} = {a / b}"); 
+				#endregion
+
+				switch (expression[expression.IndexOfAny(delimiters)])
 				{
-					operation = input[i];
+					case '+': Console.WriteLine($"{numbers[0]} + {numbers[1]} = {a + b}"); break;
+					case '-': Console.WriteLine($"{numbers[0]} - {numbers[1]} = {a - b}"); break;
+					case '*': Console.WriteLine($"{numbers[0]} * {numbers[1]} = {a * b}"); break;
+					case '/': Console.WriteLine($"{numbers[0]} / {numbers[1]} = {a / b}"); break;
+					default: Console.WriteLine("Error : No operation"); break;
 				}
 			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 
-			string[] buffer = input.Split(delimiters);
-
-			if(operation == '+')
-			result = Convert.ToDouble(buffer[0]) + Convert.ToDouble(buffer[1]);
-			if (operation == '-')
-				result = Convert.ToDouble(buffer[0]) - Convert.ToDouble(buffer[1]);
-			if (operation == '*')
-				result = Convert.ToDouble(buffer[0]) * Convert.ToDouble(buffer[1]);
-			if (operation == '/')
-				result = Convert.ToDouble(buffer[0]) / Convert.ToDouble(buffer[1]);
-
-			Console.WriteLine("=" + result);
+			Main(args);
 		}
 	}
 }
