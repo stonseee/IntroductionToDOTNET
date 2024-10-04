@@ -22,8 +22,7 @@ namespace Snake
 					mass[i, j] = '-';
 				}
 			}
-
-			//key = (char)88;
+			
 			mass[y, x] = (char)88; 
 
 			for (int i = 0; i < 10; i++)
