@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factorial", "Factorial\Fact
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake\Snake.csproj", "{0ACDDC45-6C51-44AA-815D-CDF998E8BFAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays", "Arrays\Arrays.csproj", "{7ADA3797-179E-46D9-9FF5-4F16AB4C8FDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0ACDDC45-6C51-44AA-815D-CDF998E8BFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ACDDC45-6C51-44AA-815D-CDF998E8BFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ACDDC45-6C51-44AA-815D-CDF998E8BFAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ADA3797-179E-46D9-9FF5-4F16AB4C8FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ADA3797-179E-46D9-9FF5-4F16AB4C8FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ADA3797-179E-46D9-9FF5-4F16AB4C8FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ADA3797-179E-46D9-9FF5-4F16AB4C8FDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

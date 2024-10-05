@@ -10,74 +10,45 @@ namespace Snake
 	{
 		static void Main(string[] args)
 		{
-			char key;
-			char[,] mass = new char[10, 20];
-			int x = 0;
-			int y = 0;
-
-			for (int i = 0; i < 10; i++)
-			{
-				for (int j = 0; j < 20; j++)
-				{
-					mass[i, j] = '-';
-				}
-			}
-			
-			mass[y, x] = (char)88; 
-
-			for (int i = 0; i < 10; i++)
-			{
-				for (int j = 0; j < 20; j++)
-				{
-					Console.Write(mass[i, j]);
-					if(j == 19)Console.Write('\n');
-				}
-			}			
-
+			Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
+			Random rand = new Random();
+			int x = rand.Next(Console.WindowWidth);
+			int y = rand.Next(Console.WindowHeight); 
+			Console.CursorVisible = false;
+			ConsoleKey key;	
 			do
 			{
-				key = Console.ReadKey(true).KeyChar;
-				//Console.WriteLine($"{(int)key}\t{key}");
 				Console.Clear();
-
-				mass[y, x] = '-';
-
-				if (key == 100)
-				{					
-					x += 1;
-					if (x == 20) x = 0;
-				}
-
-				if (key == 115)
+				Console.SetCursorPosition(0, 0);
+				Console.ResetColor();
+				Console.WriteLine($"X = {x}\t Y = {y}");
+				Console.SetCursorPosition(x, y);
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine((char)2);
+				key = Console.ReadKey(true).Key;
+				//Console.WriteLine($"{(int)key}\t{key}");
+				switch (key)
 				{
-					y += 1;
-					if (y == 9) y = 0;
+					case ConsoleKey.UpArrow:
+					case ConsoleKey.W:	y--;	break; 
+					case ConsoleKey.DownArrow:
+					case ConsoleKey.S:	y++;	break; 
+					case ConsoleKey.LeftArrow:
+					case ConsoleKey.A:	x--;	break; 
+					case ConsoleKey.RightArrow:
+					case ConsoleKey.D:	x++;	break; 
 				}
+				if (x == 0 || y == 0 || 
+					x == Console.WindowWidth || 
+					y == Console.WindowHeight)
+					Console.Beep();
+				if (x == 0)x = 1;
+				if (x == Console.WindowWidth) x = Console.WindowWidth - 1;
+				if (y == 0) y = 1;
+				if (y == Console.WindowHeight) y = Console.WindowHeight - 1;
+				
 
-				if (key == 97)
-				{
-					x -= 1;
-					if (x == -1) x = 19;
-				}
-
-				if (key == 119)
-				{
-					y -= 1;
-					if (y == -1) y = 9;
-				}
-
-				mass[y, x] = (char)88;
-
-				for (int i = 0; i < 10; i++)
-				{
-					for (int j = 0; j < 20; j++)
-					{
-						Console.Write(mass[i, j]);
-						if (j == 19) Console.Write('\n');
-					}
-				}
-
-			} while (true);
+			} while (key != ConsoleKey.Escape);
 		}
 	}
 }
